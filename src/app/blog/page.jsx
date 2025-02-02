@@ -6,8 +6,9 @@ import styles from './blog.module.css';
 
 // getData
 const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/blog", { 
-  next: { revalidate: 3600 }});
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
+    next: { revalidate: 3600 }
+  });
   if (!res.ok) {
     throw new Error(res.statusText);
   }
@@ -19,7 +20,7 @@ const BlogPage = async () => {
   const data = await getData();
   return (
     <div className={styles.container}>
-      {posts.map((post) => ( // AI rec this be changed to data.posts.map
+      {data.map((post) => ( // AI rec this be changed to data.posts.map
         <div className={styles.post} key={post.id}>
           <PostCard post={post} />
         </div>
@@ -30,8 +31,44 @@ const BlogPage = async () => {
 
 export default BlogPage;
 
+// Possible alternative to the above code:
+// BlogPage
+// const BlogPage = () => {
+//   const [data, setData] = useState([]);
+//   const [error, setError] = useState(null);
 
-// Testing const: BlogPage
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const result = await getData();
+//         setData(result);
+//       } catch (error) {
+//         setError(error.message);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   if (error) {
+//     return <div>Error: {error}</div>;
+//   }
+
+//   return (
+//     <div className={styles.container}>
+//       {data.map((post) => (
+//         <div className={styles.post} key={post.id}>
+//           <PostCard post={post} />
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default BlogPage;
+
+
+// Defunct code for testing const: BlogPage and rendering a displayed PostCard
 // const BlogPage = () => {
 //   return (
 //     <div className={styles.container}>

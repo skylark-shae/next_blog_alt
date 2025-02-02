@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styles from './postCard.module.css';
 import Link from 'next/link';
 
-const PostCard = () => {
+const PostCard = ({post}) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -13,12 +13,12 @@ const PostCard = () => {
         {/* <span className={styles.date}>{postDate}</span> */}
       </div>
       <div className={styles.bottom}>
-        <h1 className={styles.title}>Title</h1>
-        {/* <h1 className={styles.title}>{post.title}</h1> */}
-        <p className={styles.desc}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste, veritatis. Porro ratione iure placeat? Excepturi tenetur ducimus possimus deserunt? Autem fugiat delectus provident ipsam ad ea aliquid vitae ducimus eligendi!</p>
-        {/* <p className={styles.desc}>{post.desc}</p> */}
-        <Link className={styles.link} href="/blog/post">READ MORE</Link>
-        {/* <Link className={styles.link} href={`/blog/${post.slug}`}>READ MORE</Link> */}
+        {/* TESTING <h1 className={styles.title}>Title</h1> */}
+        <h1 className={styles.title}>{post.title}</h1>
+        {/* TESTING <p className={styles.desc}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste, veritatis. Porro ratione iure placeat? Excepturi tenetur ducimus possimus deserunt? Autem fugiat delectus provident ipsam ad ea aliquid vitae ducimus eligendi!</p> */}
+        <p className={styles.desc}>{post.desc}</p>
+        {/* TESTING <Link className={styles.link} href="/blog/post">READ MORE</Link> */}
+        <Link className={styles.link} href={`/blog/${post.slug}`}>READ MORE</Link>
       </div>
     </div>
   );
