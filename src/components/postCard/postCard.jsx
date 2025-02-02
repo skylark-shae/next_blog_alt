@@ -2,13 +2,16 @@ import Image from 'next/image';
 import styles from './postCard.module.css';
 import Link from 'next/link';
 
-const PostCard = ({post}) => {
+const PostCard = ({ post }) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <div className={styles.imageContainer}>
+        {/* TESTING <div className={styles.imageContainer}>
           <Image src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="post" width={630} height={420} />
-        </div>
+        </div> */}
+        {post.img && <div className={styles.imgContainer}>
+          <Image src={post.img} alt="" fill className={styles.img} />
+        </div>}
         <span className={styles.date}>1.2.3456</span>
         {/* <span className={styles.date}>{postDate}</span> */}
       </div>
