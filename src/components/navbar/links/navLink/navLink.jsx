@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import styles from './navLink.module.css';
-import { usePsathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const NavLink = ({ item }) => {
     const { pathname } = usePathname();

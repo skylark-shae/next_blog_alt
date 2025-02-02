@@ -1,4 +1,4 @@
-"Use client"
+"use client"
 
 const Error = () => {
     return (
