@@ -20,13 +20,11 @@ const SinglePostPage = async ({ params }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.imgContainer}>
-        <Image
-          src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-          alt="post"
-          fill className={styles.img}
-        />
-      </div>
+      {post.img && (
+        <div className={styles.imgContainer}>
+          <Image src={post.img} alt="" fill className={styles.img} />
+        </div>
+      )}
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.details}>
@@ -41,18 +39,14 @@ const SinglePostPage = async ({ params }) => {
             </Suspense>
           )}
           <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Auth</span>
-            <span className={styles.detailValue}>AuthFirst AuthLast</span>
-          </div>
-          <div className={styles.detailText}>
-            <span className={styles.detailTitle}>{post.title}</span>
-            <span className={styles.detailValue}>Date Published</span>
+            <span className={styles.detailTitle}>Published</span>
+            <span className={styles.detailValue}>{post.createdAt.toString().slice(4, 16)}</span>
           </div>
         </div>
-        <div className={styles.content}>{post.body}</div>
+        <div className={styles.content}>{post.desc}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default SinglePostPage;
