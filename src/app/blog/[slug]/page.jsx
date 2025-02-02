@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./singlePost.module.css";
 import { Suspense } from "react";
 import PostUser from "@/components/postUser/postUser";
+import { getPost } from "@/lib/data";
 
 //getPost error handling
 const getPost = async (slug) => {
@@ -33,11 +34,12 @@ const SinglePostPage = async ({ params }) => {
             src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             alt="author"
             width={50}
-            height={50}
-          />
-          <Suspense fallback={<div>Loading...</div>}>
-            <PostUser userId={post.userId} />
-          </Suspense>
+            height={50} />
+          {post && (
+            <Suspense fallback={<div>Loading...</div>}>
+              <PostUser userId={post.userId} />
+            </Suspense>
+          )}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Auth</span>
             <span className={styles.detailValue}>AuthFirst AuthLast</span>
